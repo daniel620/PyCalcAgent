@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pycalcagent"
+version = "0.1.0"
+description = "AI in 5 Days Assessment Agent: PyCalcAgent - A Python Calculator Agent that executes self-generated code."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+    { name = "hzuo", email = "hzuo@google.com" }
+]
+dependencies = [
+    "google-genai>=0.1.0",
+    "pydantic>=2.0.0",
+    "rich>=13.0.0"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "ruff>=0.1.0"
+]
+
+[project.scripts]
+pycalc = "pycalcagent.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
