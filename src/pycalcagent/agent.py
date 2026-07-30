@@ -188,3 +188,27 @@ class PyCalcAgent:
             retries_used=retries,
             recovery_instruction=last_recovery,
         )
+
+
+try:
+    from google.adk.agents.llm_agent import Agent as ADKAgent
+    _default_memory = CalculationMemory()
+    _default_tools = CalculationTools(_default_memory)
+    root_agent = ADKAgent(
+        model="gemini-2.5-flash",
+        name="pycalc_root_agent",
+        description="AI in 5 Days Assessment Agent: PyCalcAgent - Multi-agent Python calculation concierge.",
+        instruction=(
+            "You are PyCalcAgent, an expert math and calculation concierge AI.\n"
+            "You generate and execute Python scripts to solve user math requests, save variables across turns, "
+            "and provide guided recovery instructions if an error occurs."
+        ),
+        tools=[
+            _default_tools.execute_python_code,
+            _default_tools.save_variable,
+            _default_tools.get_calculation_history,
+            _default_tools.list_saved_variables,
+        ],
+    )
+except ImportError:
+    root_agent = None
