@@ -33,6 +33,8 @@ htmlcov/
 
 # Memory state files (local session data)
 .calc_memory.json
+.calc_memory.db
+.adk/
 
 # Environment variables
 .env

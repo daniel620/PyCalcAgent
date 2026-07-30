@@ -1,0 +1,37 @@
+{
+  "eval_set_id": "pycalc_golden_eval_set",
+  "name": "PyCalcAgent Golden Eval Set",
+  "description": "Benchmark evaluation set for PyCalcAgent",
+  "eval_cases": [
+    {
+      "evalId": "eval_case_1",
+      "conversation": [
+        {
+          "invocationId": "inv_1",
+          "userContent": {
+            "parts": [
+              {
+                "text": "Calculate 2 * 4"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "evalId": "eval_case_2",
+      "conversation": [
+        {
+          "invocationId": "inv_2",
+          "userContent": {
+            "parts": [
+              {
+                "text": "Calculate 100 / 5"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
