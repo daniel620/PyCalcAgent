@@ -1,4 +1,4 @@
-"""Unit tests for PyCalcAgent tools (Criterion 1: Tool & Interface Design)."""
+"""Unit tests for PyCalcAgent tools, Pydantic validation, and recovery instructions (Criterion 1)."""
 
 import pytest
 
@@ -8,9 +8,9 @@ from pycalcagent.tools import CalculationTools
 
 @pytest.fixture
 def memory(tmp_path):
-    """Provide a clean temporary memory instance."""
-    mem_file = tmp_path / "test_memory.json"
-    return CalculationMemory(storage_path=str(mem_file))
+    """Provide a clean temporary SQLite memory instance."""
+    mem_file = tmp_path / "test_memory.db"
+    return CalculationMemory(db_path=str(mem_file))
 
 
 @pytest.fixture
@@ -27,16 +27,18 @@ def test_execute_python_code_success(tools):
     assert res["stdout"] == "8"
     assert res["returncode"] == 0
     assert res["error_message"] is None
+    assert res["recovery_instruction"] is None
 
 
-def test_execute_python_code_error(tools):
-    """Test handling of runtime errors in executed Python code."""
+def test_execute_python_code_error_recovery(tools):
+    """Test handling of runtime errors and guided recovery instructions."""
     code = "print(10 / 0)"
     res = tools.execute_python_code(code, "Zero division test")
     assert res["success"] is False
     assert res["returncode"] != 0
     assert "ZeroDivisionError" in res["stderr"]
-    assert res["error_message"] is not None
+    assert res["recovery_instruction"] is not None
+    assert "Division by zero detected" in res["recovery_instruction"]
 
 
 def test_save_and_list_variable(tools):

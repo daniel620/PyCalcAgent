@@ -4,23 +4,27 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pycalcagent"
-version = "0.1.0"
-description = "AI in 5 Days Assessment Agent: PyCalcAgent - A Python Calculator Agent that executes self-generated code."
+version = "0.2.0"
+description = "AI in 5 Days Assessment Agent: PyCalcAgent - Multi-agent Python calculation platform with HITL, SQLite vector memory, OTel tracing, and IaC."
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
 authors = [
-    { name = "hzuo", email = "hzuo@google.com" }
+    { name = "Louis Zuo", email = "hzuo@google.com" }
 ]
 dependencies = [
     "google-genai>=0.1.0",
     "pydantic>=2.0.0",
-    "rich>=13.0.0"
+    "rich>=13.0.0",
+    "opentelemetry-api>=1.20.0",
+    "opentelemetry-sdk>=1.20.0",
+    "google-cloud-secret-manager>=2.16.0"
 ]
 
 [project.optional-dependencies]
 dev = [
     "pytest>=7.0.0",
+    "pytest-asyncio>=0.21.0",
     "ruff>=0.1.0"
 ]
 
@@ -37,3 +41,4 @@ target-version = "py310"
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["src"]
+asyncio_mode = "auto"

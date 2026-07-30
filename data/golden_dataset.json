@@ -1,0 +1,12 @@
+[
+  {"query": "2 * 4", "expected": "8"},
+  {"query": "100 / 5", "expected": "20.0"},
+  {"query": "15 + 27", "expected": "42"},
+  {"query": "100 - 33", "expected": "67"},
+  {"query": "2 ** 10", "expected": "1024"},
+  {"query": "50 * 0.10", "expected": "5.0"},
+  {"query": "(10 + 5) * 2", "expected": "30"},
+  {"query": "1000 / 10 / 10", "expected": "10.0"},
+  {"query": "3 * 3 * 3", "expected": "27"},
+  {"query": "100 + 200 + 300", "expected": "600"}
+]
