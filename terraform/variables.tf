@@ -1,6 +1,7 @@
 variable "project_id" {
   description = "Google Cloud Project ID where PyCalcAgent is deployed."
   type        = string
+  default     = "hzuo-experiment-sandbox-551643"
 }
 
 variable "region" {
@@ -12,5 +13,5 @@ variable "region" {
 variable "container_image" {
   description = "Container registry URI for PyCalcAgent Docker image."
   type        = string
-  default     = "gcr.io/test-project/pycalcagent:latest"
+  default     = "gcr.io/hzuo-experiment-sandbox-551643/pycalcagent:latest"
 }

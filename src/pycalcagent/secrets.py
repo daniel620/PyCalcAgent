@@ -15,7 +15,7 @@ class SecretManagerClient:
     """Retrieves secrets from Google Cloud Secret Manager with fallback to environment variables."""
 
     def __init__(self, project_id: str | None = None):
-        self.project_id = project_id or os.getenv("GOOGLE_CLOUD_PROJECT") or "test-project"
+        self.project_id = project_id or os.getenv("GOOGLE_CLOUD_PROJECT") or "hzuo-experiment-sandbox-551643"
         self.client = None
         if SECRET_MANAGER_AVAILABLE:
             try:
